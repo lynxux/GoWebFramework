@@ -2,8 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/lynxux/goWebFramework/framework"
-	"github.com/lynxux/goWebFramework/framework/middleware"
+	"github.com/lynxux/goWebFramework/framework/gin"
 	"log"
 	"net/http"
 	"os"
@@ -13,8 +12,8 @@ import (
 )
 
 func main() {
-	core := framework.NewCore()
-	core.Use(middleware.Recovery())
+	core := gin.New()
+	core.Use(gin.Recovery())
 	registerRouter(core)
 	server := &http.Server{
 		Handler: core,

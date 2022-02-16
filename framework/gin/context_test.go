@@ -22,8 +22,8 @@ import (
 	"time"
 
 	"github.com/gin-contrib/sse"
-	"github.com/lynxux/goWebFramework/framework/gin/binding"
 	"github.com/golang/protobuf/proto"
+	"github.com/lynxux/goWebFramework/framework/gin/binding"
 	"github.com/stretchr/testify/assert"
 
 	testdata "github.com/lynxux/goWebFramework/framework/gin/testdata/protoexample"
@@ -364,7 +364,8 @@ func TestContextHandlerNames(t *testing.T) {
 
 	assert.True(t, len(names) == 4)
 	for _, name := range names {
-		assert.Regexp(t, `^(.*/vendor/)?(github\.com/gin-gonic/gin\.){1}(TestContextHandlerNames\.func.*){0,1}(handlerNameTest.*){0,1}`, name)
+		fmt.Println(name)
+		assert.Regexp(t, `^(.*/vendor/)?(github\.com/lynxux/goWebFramework/framework/gin\.){1}(TestContextHandlerNames\.func.*){0,1}(handlerNameTest.*){0,1}`, name)
 	}
 }
 
