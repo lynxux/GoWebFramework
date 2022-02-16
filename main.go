@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/lynxux/goWebFramework/framework/gin"
+	"github.com/lynxux/goWebFramework/provider/demo"
 	"log"
 	"net/http"
 	"os"
@@ -13,6 +14,9 @@ import (
 
 func main() {
 	core := gin.New()
+
+	core.Bind(&demo.DemoServiceProvider{})
+
 	core.Use(gin.Recovery())
 	registerRouter(core)
 	server := &http.Server{
@@ -32,7 +36,7 @@ func main() {
 	<-quit
 
 	// 调用Server.Shutdown graceful结束
-	timeoutCtx, cancel := context.WithTimeout(context.Background(), 20*time.Second) // 超时的context
+	timeoutCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second) // 超时的context
 	defer cancel()
 
 	//Shutdown() 一旦执行之后，它会阻塞当前 Goroutine，并且在所有连接请求都结束之后，才继续往后执行

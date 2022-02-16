@@ -16,7 +16,7 @@ func registerRouter(core *gin.Engine) {
 		subjectApi.DELETE("/:id", SubjectDelController)
 		subjectApi.PUT("/:id", SubjectUpdateController)
 		// 单个路由增加中间件
-		subjectApi.GET("/:id", middleware.Test3(), SubjectGetController)
+		subjectApi.GET("/:id", SubjectGetController)
 		subjectApi.GET("/list/all", SubjectListController)
 	}
 }
